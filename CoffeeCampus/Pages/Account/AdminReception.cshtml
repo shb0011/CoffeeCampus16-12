@@ -1,0 +1,276 @@
+﻿@page
+@model CoffeeCampus.Pages.Account.AdminReceptionModel
+@{
+}
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reception</title>
+    <link rel="stylesheet" href="~/css/Admin.css"/>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffe6; /* Lys grå baggrund */
+            display: flex; /* For at dele layoutet mellem venstre side og indholdet */
+        }
+
+        .sidebar {
+            background-color: #f7f787;
+            padding: 20px;
+            width: 200px;
+        }
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .sidebar li {
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer; /* Viser pointer ved hover */
+            }
+
+                .sidebar li:hover {
+                    background-color: #e0e0e0;
+                }
+
+                .sidebar li span {
+                    display: inline-block;
+                    margin-right: 8px;
+                    /* border: 1px solid black; */
+                    width: 20px;
+                    height: 20px;
+                    text-align: center;
+                    line-height: 20px;
+                    vertical-align: middle;
+                }
+
+                .sidebar li:first-child span {
+                    /* border: 1px solid black; */
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20z"/%3E%3Cpath d="m10 16l4-4l-4-4"/%3E%3C/svg%3E');
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                }
+
+                .sidebar li:nth-child(2) span {
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/%3E%3Cpath d="M4 12h16"/%3E%3C/svg%3E');
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                }
+
+                .sidebar li:nth-child(3) span {
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M12 2v20M2 12h20"/%3E%3Ccircle cx="12" cy="12" r="8"/%3E%3C/svg%3E');
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                }
+
+                .sidebar li:nth-child(4) span {
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M12 2v20M2 12h20"/%3E%3Cpath d="m12 4l-8 8l8 8"/%3E%3C/svg%3E');
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                }
+
+                .sidebar li:last-child span {
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M12 2v20M2 12h20"/%3E%3Cpath d="m4 9l16 6"/%3E%3Cpath d="m4 15l16-6"/%3E%3C/svg%3E');
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: center;
+                }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .header h1 {
+                margin: 0;
+            }
+
+            .header .action-buttons {
+                display: flex;
+                align-items: center;
+                gap: 10px; /* spacing between buttons */
+            }
+
+                .header .action-buttons button {
+                    padding: 8px 12px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+
+                    .header .action-buttons button:first-child {
+                        background-color: #fff; /* Lys baggrund */
+                        border: 1px solid #ddd;
+                    }
+
+                        .header .action-buttons button:first-child svg {
+                            margin-right: 5px; /* spacing between button and text */
+                            vertical-align: middle;
+                        }
+
+                    .header .action-buttons button:last-child {
+                        background-color: #f0f0f0; /* Lys baggrund */
+                        border: 1px solid #ddd;
+                    }
+
+        .task-list {
+            margin-top: 20px;
+        }
+
+        .task-item {
+            background-color: #fff; /* Lys baggrund */
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Lidt skygge */
+        }
+
+            .task-item .task-icon {
+                background-color: #ddd;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+                .task-item .task-icon svg {
+                    /* color: #666; */
+                    display: block;
+                    height: 30px;
+                    width: 30px;
+                }
+
+            .task-item .task-details {
+                flex: 1;
+            }
+
+                .task-item .task-details h3 {
+                    margin: 0;
+                }
+
+                .task-item .task-details p {
+                    margin: 0;
+                    color: #666
+                }
+
+            .task-item .task-date {
+                margin-left: auto; /* pusher dato til højresiden */
+                color: #666;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><span></span> General</li>
+            <li><span></span> Rengøring</li>
+            <li><span></span> Opfyldning</li>
+            <li><span></span> Service</li>
+            <li><span></span> Slangeskift</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Reception</h1>
+            <div class="action-buttons">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">
+                        <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                    </svg>
+                    Opret opgave
+                </button>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.07l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L10.97 4.97z" />
+                    </svg>
+                    Klaret
+                </button>
+                <button>Uklaret</button>
+            </div>
+        </div>
+        <div class="task-list">
+            <div class="task-item">
+                <div class="task-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 11a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-10z" />
+                        <path d="M7 5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5z" />
+                        <path d="m11 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                        <path d="m14 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                    </svg>
+                </div>
+                <div class="task-details">
+                    <h3>Kaffemaskine fyldt op</h3>
+                    <p>Kaffemaskine #1 <br> Mohammed Abdul Secilmis</p>
+                </div>
+                <span class="task-date">21-02-2024</span>
+            </div>
+            <div class="task-item">
+                <div class="task-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 11a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-10z" />
+                        <path d="M7 5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5z" />
+                        <path d="m11 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                        <path d="m14 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                    </svg>
+                </div>
+                <div class="task-details">
+                    <h3>Kaffemaskine fyldt op</h3>
+                    <p>Kaffemaskine #1 <br> Mohammed Abdul Secilmis</p>
+                </div>
+                <span class="task-date">21-02-2024</span>
+            </div>
+            <div class="task-item">
+                <div class="task-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 11a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-10z" />
+                        <path d="M7 5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5z" />
+                        <path d="m11 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                        <path d="m14 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                    </svg>
+                </div>
+                <div class="task-details">
+                    <h3>Kaffemaskine fyldt op</h3>
+                    <p>Kaffemaskine #1 <br> Mohammed Abdul Secilmis</p>
+                </div>
+                <span class="task-date">21-02-2024</span>
+            </div>
+            <div class="task-item">
+                <div class="task-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 11a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-10z" />
+                        <path d="M7 5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5z" />
+                        <path d="m11 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                        <path d="m14 8a1 1 0 1 0 0-2a1 1 0 0 0 0 2z" />
+                    </svg>
+                </div>
+                <div class="task-details">
+                    <h3>Kaffemaskine fyldt op</h3>
+                    <p>Kaffemaskine #1 <br> Mohammed Abdul Secilmis</p>
+                </div>
+                <span class="task-date">21-02-2024</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
