@@ -37,13 +37,7 @@ app.MapRazorPages();
 
 app.Run();
 
-builder.Services.AddDbContext<CoffeeCampusContext>(options =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseSqlServer(connectionString);
-});
 
-using (var scope = builder.Services.BuildServiceProvider().CreateScope()) {
-    var context = scope.ServiceProvider.GetRequiredService<CoffeeCampusContext>();
-    Console.WriteLine("DbContext initialiseret korrekt!");
-}
+
+
+

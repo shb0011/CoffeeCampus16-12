@@ -1,0 +1,50 @@
+﻿@page
+@model CoffeeCampus.Pages.Account.CreateUserModel
+@{
+}
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opret Bruger</title>
+    <!-- Link til CSS -->
+    <link rel="stylesheet" href="~/css/CreateUser.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <h1>Opret en ny bruger</h1>
+        <form action="/create-user" method="POST" class="form">
+            <!-- Brugernavn -->
+            <label for="username">Brugernavn</label>
+            <input type="text" id="username" name="username" placeholder="Indtast dit brugernavn" required>
+
+            <!-- E-mail -->
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Indtast din e-mail" required>
+
+            <!-- Adgangskode -->
+            <label for="password">Adgangskode</label>
+            <input type="password" id="password" name="password" placeholder="Vælg en adgangskode" required>
+
+            <!-- Bekræft adgangskode -->
+            <label for="confirm-password">Bekræft adgangskode</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Gentag adgangskoden" required>
+
+            <!-- Dropdown-menu til afdeling -->
+            <label for="department">Afdeling</label>
+            <select id="department" name="department" required>
+                <option value="" disabled selected>Vælg afdeling</option>
+                <option value="Facilitator">Facilitator</option>
+                <option value="Kantine">Kantine</option>
+                <option value="Rengøring">Rengøring</option>
+            </select>
+
+            <!-- Knap -->
+            <button type="submit">Opret Bruger</button>
+        </form>
+    </div>
+</body>
+</html>
+
+

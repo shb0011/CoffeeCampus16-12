@@ -1,0 +1,41 @@
+﻿@page
+@model CoffeeCampus.Pages.Account.AdminRegistrationModel
+@{
+}
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registrering</title>
+    <!-- Link til CSS -->
+    <link rel="stylesheet" href="~/css/CreateUser.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <h1>Opret Admin Konto</h1>
+        <form action="/admin-register" method="POST" class="form">
+            <!-- Admin Brugernavn -->
+            <label for="admin-username">Admin Brugernavn</label>
+            <input type="text" id="admin-username" name="admin-username" placeholder="Indtast dit brugernavn" required>
+
+            <!-- E-mail -->
+            <label for="admin-email">Admin E-mail</label>
+            <input type="email" id="admin-email" name="admin-email" placeholder="Indtast din e-mail" required>
+
+            <!-- Adgangskode -->
+            <label for="admin-password">Adgangskode</label>
+            <input type="password" id="admin-password" name="admin-password" placeholder="Vælg en adgangskode" required>
+
+            <!-- Bekræft adgangskode -->
+            <label for="admin-confirm-password">Bekræft Adgangskode</label>
+            <input type="password" id="admin-confirm-password" name="admin-confirm-password" placeholder="Gentag adgangskoden" required>
+
+
+            <!-- Knap -->
+            <button type="submit">Registrer Admin</button>
+        </form>
+    </div>
+</body>
+</html>
+
